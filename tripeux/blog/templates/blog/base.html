@@ -1,0 +1,111 @@
+{% load staticfiles %}
+<html>
+    <head>
+<br>
+<br>
+<br>
+<br>
+<p style="text-align:center;"><img src="/static/TTLOGO.jpg"/></a></p>
+<title>Le Blog des Tripeux TripTribus</title>
+<link rel="icon" href="/static/plainTT.ico" type="image/x-icon">
+<link rel="shortcut icon" href="/static/plainTT.ico" type="image/x-icon" />
+<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+
+    </head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+<nav class="navbar navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+<a class="navbar-brand" href="#myPage"><img src="/static/ttpetit1.jpg" /></a>
+      <a class="navbar-brand" href="http://www.triptribus.com" target="_blank" >TripTribus</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+     <li><a href="#credits">CRÉDITS PHOTOS</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="container">
+     <h1 style="text-align:center;"><a href="/">Le Blog des Tripeux!</a></h1>
+     <p style="text-align:center;"><img src="/static/bandetripeux.jpg"/></a></p>
+     <br>
+        <p style="text-align:center;"><b>Bienvenue!</b></p>
+        <br>
+        <p style="text-align:center;">Le quotidien des artisans de chez TripTribus en est un de passion. Passion commune pour le bien commun, pour le travail bien fait. Mais il n’y a évidemment pas que cette passion du travail qui les animent. Dans cet espace les artisans de chez TripTribus partagerons avec vous leurs passions personnelles. Ce qui les fait vibrer. Ce qui les fait rêver. Ce qui les fascine au point d’y plonger le plus souvent possible aussitôt que le temps le permet.<br> <br><b>Bonne lecture! Et vous ? Quelle est votre passion ?</b></p>  
+  </div>
+ </div>
+</div>
+
+    {% if user.is_authenticated %}
+    <a style="color:#010D36" href="{% url 'blog.views.post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+    <a style="color:#010D36" href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+    <p style="color:#010D36"  class="top-menu">{{ user.username }}<small><br>(<a href="{% url 'django.contrib.auth.views.logout' %}">Sortie</a>)</small></p>
+    {% else %}
+        <a style="color:#010D36" href="{% url 'django.contrib.auth.views.login' %}" class="top-menu"><span class="glyphicon glyphicon-fire"></span></a>
+        {% endif %}
+
+    <div class="container">
+            {% block content %}
+            {% endblock %}
+    </div>
+<div id="credits" class="container">
+   <p class="img-responsive" style="text-align:center;"><img src="/static/bandetripeux.jpg"/></a></p>    
+   <h3>Cr&eacute;dits photos!</h3>
+        <p>
+      <a> From Noun Project<br>
+
+Ealancheliyan s, Luis Prado, Patrick Trouvé, Les vieux garçons, Desbenoit, Gerald Wildmoser, Shems Dance, TenSheep
+        </a>
+      </p>
+      </div>
+      </div>
+</div>
+
+
+
+
+
+
+<footer class="text-center">
+  <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>Une création</p><p><a href="http://www.logilibre.net" target="_blank" data-toggle="tooltip"><img  src="/static/logilibre.jpg"/></a></p>
+</footer>
+
+
+
+{% load piwik %}
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//158.69.206.94/piwik/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 3]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//158.69.206.94/piwik/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+{% piwik %}
+</body>
+</html>
+

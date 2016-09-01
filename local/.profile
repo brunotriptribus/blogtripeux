@@ -1,0 +1,1 @@
+/home/tripeux/.profile

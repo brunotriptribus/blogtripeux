@@ -1,0 +1,1 @@
+/home/tripeux/.bash_logout
